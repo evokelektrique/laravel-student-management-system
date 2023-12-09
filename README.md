@@ -17,7 +17,7 @@ Follow these steps to set up the Student Management System on your local machine
 1. Clone the repository to your local machine:
 
    ```bash
-   git clone https://github.com/your-username/student-management-system.git
+   git clone https://github.com/evokelektrique/laravel-student-management-system.git
    ```
 
 2. Navigate to the project directory:

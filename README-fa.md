@@ -17,7 +17,7 @@
 1. مخزن را روی ماشین خود کلون کنید:
 
    ```bash
-   git clone https://github.com/your-username/student-management-system.git
+   git clone https://github.com/evokelektrique/laravel-student-management-system.git
    ```
 
 2. وارد پوشه پروژه شوید:
