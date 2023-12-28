@@ -20,7 +20,13 @@ class HomeController extends Controller {
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index() {
-        $student = auth()->user()->student;
+        $user = auth()->user();
+
+        if ($user->isAdmin()) {
+            return view('admin.home');
+        }
+
+        $student = $user->student;
         $coursesBasic = $student->coursesByType('پايه');
         $coursesMandatory = $student->coursesByType('تخصصي الزامي');
         $coursesOptional = $student->coursesByType('تخصصي اختياري');

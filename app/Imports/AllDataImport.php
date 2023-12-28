@@ -14,6 +14,10 @@ use Maatwebsite\Excel\Concerns\ToCollection;
 class AllDataImport implements ToCollection {
     public function collection(Collection $rows) {
         foreach ($rows->slice(1) as $row) {
+            if(empty($row[0])) {
+                continue;
+            }
+
             // Import Users
             $user = User::firstOrCreate(
                 ['email' => "default_{$row[0]}@email.com"], // Assuming 'email' is a unique field
