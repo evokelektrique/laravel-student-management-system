@@ -11,7 +11,6 @@ class Student extends Model {
 
     protected $fillable = [
         'student_number', 'full_name', 'user_id', 'department_id', 'education_level',
-        // Add other student-related fields as needed
     ];
 
     public function department() {
@@ -30,5 +29,30 @@ class Student extends Model {
 
     public function coursesByType(string $type): Collection {
         return $this->courses()->where('course_type', $type)->get();
+    }
+
+    public function hasPassedAllCoursesByType(array $desiredCourseNames): bool {
+        $passedCoursesCount = $this->courses()
+            ->whereIn('course_name', $desiredCourseNames)
+            ->count();
+
+        return $passedCoursesCount === count($desiredCourseNames);
+    }
+
+    public function hasPassedCourse(string $courseName): bool {
+        return $this->courses()
+            ->where('course_name', $courseName)
+            ->exists();
+    }
+
+    public function hasPassedCoursesByMinimumUnits(int $minimumTotalUnits, string $desiredCourseType): bool {
+        $totalUnits = $this->courses()
+            ->where('course_type', $desiredCourseType)
+            ->selectRaw('SUM(course_number_of_units) as total_units')
+            ->groupBy('student_courses.student_id')
+            ->pluck('total_units')
+            ->first();
+
+        return $totalUnits >= $minimumTotalUnits;
     }
 }

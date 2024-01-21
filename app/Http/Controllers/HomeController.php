@@ -28,9 +28,11 @@ class HomeController extends Controller {
 
         $student = $user->student;
         $coursesBasic = $student->coursesByType('پايه');
-        $coursesMandatory = $student->coursesByType('تخصصي الزامي');
-        $coursesOptional = $student->coursesByType('تخصصي اختياري');
+        $coursesRequired = $student->coursesByType('اصلي');
+        $coursesMandatory = $student->coursesByType('تخصصی 1');
+        $coursesMandatory2 = $student->coursesByType('تخصصی 2');
+        $coursesBaseMandatory = $student->coursesByType('عمومی اجباری');
 
-        return view('home', compact('coursesBasic', 'coursesMandatory', 'coursesOptional'));
+        return view('home', compact('coursesBasic', 'coursesRequired', 'coursesMandatory', 'coursesMandatory2', 'coursesBaseMandatory'));
     }
 }

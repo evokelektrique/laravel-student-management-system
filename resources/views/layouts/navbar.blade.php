@@ -43,6 +43,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('course.studentCourses', auth()->user()->student) }}">{{ __('Courses') }}</a>
                         </li>
+                        <li>
+                            <a class="nav-link" href="{{ route('student.download_certificate', auth()->user()->id) }}">{{ __('Get Certificate') }}</a>
+                        </li>
                     @endif
 
 

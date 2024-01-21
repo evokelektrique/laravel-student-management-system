@@ -23,7 +23,15 @@
                     </div>
                     <div class="col-12 col-lg-4">
                         <div class="card bg-secondary mb-3">
-                            <div class="card-header  text-center">دروس تخصصي الزامي</div>
+                            <div class="card-header  text-center">اصلي</div>
+                            <div class="card-body">
+                                <h4 class="card-title text-center">{{ $coursesRequired->count() }}</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-4">
+                        <div class="card bg-secondary mb-3">
+                            <div class="card-header  text-center">تخصصی 1</div>
                             <div class="card-body">
                                 <h4 class="card-title text-center">{{ $coursesMandatory->count() }}</h4>
                             </div>
@@ -31,9 +39,17 @@
                     </div>
                     <div class="col-12 col-lg-4">
                         <div class="card bg-secondary mb-3">
-                            <div class="card-header  text-center">دروس تخصصي اختياري</div>
+                            <div class="card-header  text-center">عمومی اجباری</div>
                             <div class="card-body">
-                                <h4 class="card-title text-center">{{ $coursesOptional->count() }}</h4>
+                                <h4 class="card-title text-center">{{ $coursesBaseMandatory->count() }}</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-4">
+                        <div class="card bg-secondary mb-3">
+                            <div class="card-header  text-center">تخصصی 2</div>
+                            <div class="card-body">
+                                <h4 class="card-title text-center">{{ $coursesMandatory2->count() }}</h4>
                             </div>
                         </div>
                     </div>

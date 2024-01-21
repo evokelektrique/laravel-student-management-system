@@ -33,6 +33,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'a
 Route::group(['prefix' => 'students', 'as' => 'student.', 'middleware' => ['auth']], function () {
     Route::get('/', [StudentController::class, 'index'])->name('index')->middleware(['admin']);
     Route::get('/{student}', [StudentController::class, 'show'])->name('show')->middleware(['admin']);
+    Route::get('/{user}/download_certificate', [StudentController::class, 'download_certificate'])->name('download_certificate');
 });
 Route::group(['prefix' => 'courses', 'as' => 'course.', 'middleware' => ['auth']], function () {
     Route::get('/', [CourseController::class, 'index'])->name('index');
