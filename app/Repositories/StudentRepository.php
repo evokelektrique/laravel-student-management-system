@@ -10,13 +10,19 @@ class StudentRepository {
 
     public function can_get_certificate(Student $student): array {
         $hasPassedCourses = [
-            'base'                                     => $student->hasPassedAllCoursesByType($this->getCoursesByType('base')),
-            'required'                                 => $student->hasPassedAllCoursesByType($this->getCoursesByType('required')),
-            'specialization'                           => $student->hasPassedCoursesByMinimumUnits(18, 'تخصصی 1'),
-            'project'                                  => $student->hasPassedCourse('پروژه'),
-            'optional-executive-engineering-package'   => $student->hasPassedCoursesByMinimumUnits(15, 'اختياري بسته مهندسي اجرايي'),
-            'optional-information-systems'             => $student->hasPassedCoursesByMinimumUnits(15, 'اختياري سیستم های اطلاعاتی'),
-            'optional-production-and-services-systems' => $student->hasPassedCoursesByMinimumUnits(15, 'اختياري سیستم های تولیدی و خدماتی'),
+            'base'           => $student->hasPassedAllCoursesByType($this->getCoursesByType('base')),
+            'required'       => $student->hasPassedAllCoursesByType($this->getCoursesByType('required')),
+            'specialization' => $student->hasPassedCoursesByMinimumUnits(18, 'تخصصی 1'),
+            'project'        => $student->hasPassedCourse('پروژه'),
+
+            'optional-executive-engineering-package'           => $student->hasPassedCoursesByMinimumUnits(15, 'اختياري بسته مهندسي اجرايي'),
+            'optional-executive-engineering-package-remaining' => $student->unitsNeededToReachMinimum(15, 'اختياري بسته مهندسي اجرايي'),
+
+            'optional-information-systems'           => $student->hasPassedCoursesByMinimumUnits(15, 'اختياري سیستم های اطلاعاتی'),
+            'optional-information-systems-remaining' => $student->unitsNeededToReachMinimum(15, 'اختياري سیستم های اطلاعاتی'),
+
+            'optional-production-and-services-systems'           => $student->hasPassedCoursesByMinimumUnits(15, 'اختياري سیستم های تولیدی و خدماتی'),
+            'optional-production-and-services-systems-remaining' => $student->unitsNeededToReachMinimum(15, 'اختياري سیستم های تولیدی و خدماتی'),
         ];
 
         return $hasPassedCourses;

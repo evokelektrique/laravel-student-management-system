@@ -42,6 +42,8 @@ class AllDataImport implements ToCollection {
                 ['student_number' => $row[0]], // Assuming 'student_number' is a unique field
                 [
                     'full_name' => $row[1],
+                    'full_name_english' => $row[26],
+                    'national_id' => $row[27],
                     'user_id' => $user->id,
                     'education_level' => $row[4],
                     'department_id' => $department->id,

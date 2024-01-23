@@ -45,7 +45,7 @@ class StudentCoursesDataTable extends DataTable {
             ->columns($this->getColumns())
             ->minifiedAjax()
             //->dom('Bfrtip')
-            ->orderBy(1)
+            ->orderBy(0)
             ->selectStyleSingle()
             ->buttons([
                 Button::make('excel'),
@@ -62,12 +62,13 @@ class StudentCoursesDataTable extends DataTable {
      */
     public function getColumns(): array {
         return [
-            Column::make('id'),
-            Column::make('course_id'),
-            Column::make('course.course_name')->title('Course Name'),
-            Column::make('created_at'),
+            Column::make('id')->title('#'),
+            Column::make('course_id')->title('# درس'),
+            Column::make('course.course_name')->title('نام درس'),
+            Column::make('created_at')->title('زمان ایجاد'),
 
             Column::computed('action')
+                ->title('عملیات')
                 ->exportable(false)
                 ->printable(false)
                 ->width(60)

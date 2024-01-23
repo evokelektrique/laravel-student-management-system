@@ -4,13 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
 
 class Student extends Model {
     use HasFactory;
 
     protected $fillable = [
-        'student_number', 'full_name', 'user_id', 'department_id', 'education_level',
+        'student_number', 'full_name', 'national_id', 'full_name_english', 'user_id', 'department_id', 'education_level',
     ];
 
     public function department() {
@@ -54,5 +55,26 @@ class Student extends Model {
             ->first();
 
         return $totalUnits >= $minimumTotalUnits;
+    }
+
+    public function unitsNeededToReachMinimum(int $minimumTotalUnits, string $desiredCourseType): int {
+        $totalUnits = $this->courses()
+            ->where('course_type', $desiredCourseType)
+            ->selectRaw('SUM(course_number_of_units) as total_units')
+            ->groupBy('student_courses.student_id')
+            ->pluck('total_units')
+            ->first();
+
+        if ($totalUnits === null) {
+            // No courses of the desired type found
+            return $minimumTotalUnits; // All units needed to reach the minimum
+        }
+        $remainingUnits = max(0, $minimumTotalUnits - $totalUnits);
+
+        return $remainingUnits;
+    }
+
+    public function certificates(): HasMany {
+        return $this->hasMany(StudentCertificate::class);
     }
 }

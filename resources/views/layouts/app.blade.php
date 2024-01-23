@@ -18,7 +18,7 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 
-<body>
+<body dir="rtl" lang="fa-IR">
     <div id="app">
         @include('layouts.navbar')
 

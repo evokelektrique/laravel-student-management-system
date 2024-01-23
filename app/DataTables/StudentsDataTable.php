@@ -40,7 +40,7 @@ class StudentsDataTable extends DataTable {
             ->columns($this->getColumns())
             ->minifiedAjax()
             //->dom('Bfrtip')
-            ->orderBy(1)
+            ->orderBy(0)
             ->selectStyleSingle()
             ->buttons([
                 Button::make('excel'),
@@ -57,12 +57,14 @@ class StudentsDataTable extends DataTable {
      */
     public function getColumns(): array {
         return [
-            Column::make('id'),
-            Column::make('student_number'),
-            Column::make('full_name'),
-            Column::make('created_at'),
+            Column::make('id')->title('#'),
+            Column::make('student_number')->title('شماره دانشجویی'),
+            Column::make('full_name')->title('نام و نام خانوادگی'),
+            Column::make('national_id')->title('کد مدلی'),
+            Column::make('created_at')->title('زمان ایجاد'),
 
             Column::computed('action')
+                ->title('عملیات')
                 ->exportable(false)
                 ->printable(false)
                 ->width(60)

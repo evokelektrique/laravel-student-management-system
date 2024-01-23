@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="card">
-            <div class="card-header">Manage Courses</div>
+            <div class="card-header">مدیریت درس ها</div>
             <div class="card-body">
                 {{ $dataTable->table() }}
             </div>
