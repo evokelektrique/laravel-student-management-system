@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="card">
-            <div class="card-header">{{ __('Dashboard') }}</div>
+            <div class="card-header">{{ __('داشبورد') }}</div>
 
             <div class="card-body">
                 @if (session('status'))
@@ -12,7 +12,7 @@
                     </div>
                 @endif
 
-                Welcome {{ auth()->user()->name }}, use the navbar to navigate to other sections.
+                خوش آمدید {{ auth()->user()->name }} عزیز, لطفا از نوار بار بالا جهت انجام عملیات های خود استفاده کنید.
             </div>
         </div>
     </div>
